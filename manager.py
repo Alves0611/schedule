@@ -4,6 +4,16 @@ def add_contact(contacts, name, phone, email, favorite=False):
     print('Contato {} foi adicionado com sucesso'.format(name))
     return
 
+def view_contacts(contacts):
+    print('\nLista de contatos:')
+    for index, contact in enumerate(contacts, start=1):
+        favorite_status = '★' if contact['favorite'] else ''
+        contact_name = contact['name']
+        contact_phone = contact['phone']
+        contact_email = contact['email']
+        print('{}. {} {} [{}]'.format(index, contact_name, favorite_status, contact_phone, contact_email))
+    return
+
 contacts = []
 
 while True:
@@ -24,3 +34,6 @@ while True:
         email = input('Digite o email do contato: ')
         favorite = input('Marcar como favorito? (S/N): ').upper() == 'S'
         add_contact(contacts, name, phone, email, favorite)
+
+    elif choice == '2':
+        view_contacts(contacts)
