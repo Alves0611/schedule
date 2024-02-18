@@ -32,6 +32,16 @@ def toggle_favorite(contacts, contact_index):
     print('\nContato {} marcado como {}'.format(contact_index, status))
     return
 
+def delete_contact(contacts, contact_index):
+    adjusted_index = int(contact_index) - 1
+    if adjusted_index >= 0 and adjusted_index < len(contacts):
+        deleted_contact = contacts.pop(adjusted_index)
+        print('Contato {} removido: {}'.format(contact_index, deleted_contact['name']))
+    else:
+        print('\nÍndice de contato inválido')
+    return
+
+
 contacts = []
 
 while True:
@@ -68,3 +78,11 @@ while True:
         view_contacts(contacts)
         contact_index = input('Digite o número do contato que deseja marcar/desmarcar como favorito: ')
         toggle_favorite(contacts, contact_index)
+
+    elif choice == '5':
+        view_contacts(contacts)
+        contact_index = input('Digite o número do contato que deseja apagar: ')
+        delete_contact(contacts, contact_index)
+
+    elif choice == '6':
+        break
