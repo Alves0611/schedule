@@ -1,3 +1,9 @@
+def add_contact(contacts, name, phone, email, favorite=False):
+    contact = {'name': name, 'phone': phone, 'email': email, 'favorite': favorite}
+    contacts.append(contact)
+    print('Contato {} foi adicionado com sucesso'.format(name))
+    return
+
 contacts = []
 
 while True:
@@ -10,3 +16,11 @@ while True:
     print('6. Sair')
 
     choice = input('Digite a sua escolha: ')
+
+
+    if choice == '1':
+        name = input('Digite o nome do contato: ')
+        phone = input('Digite o telefone do contato: ')
+        email = input('Digite o email do contato: ')
+        favorite = input('Marcar como favorito? (S/N): ').upper() == 'S'
+        add_contact(contacts, name, phone, email, favorite)
