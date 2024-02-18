@@ -25,6 +25,13 @@ def edit_contact(contacts, contact_index, new_name, new_phone, new_email):
         print('\nÍndice de contato inválido')
     return
 
+def toggle_favorite(contacts, contact_index):
+    adjusted_index = int(contact_index) - 1
+    contacts[adjusted_index]['favorite'] = not contacts[adjusted_index]['favorite']
+    status = 'favorito' if contacts[adjusted_index]['favorite'] else 'desfavorito'
+    print('\nContato {} marcado como {}'.format(contact_index, status))
+    return
+
 contacts = []
 
 while True:
@@ -56,3 +63,8 @@ while True:
         new_phone = input('Digite o novo telefone do contato: ')
         new_email = input('Digite o novo email do contato: ')
         edit_contact(contacts, contact_index, new_name, new_phone, new_email)
+
+    elif choice == '4':
+        view_contacts(contacts)
+        contact_index = input('Digite o número do contato que deseja marcar/desmarcar como favorito: ')
+        toggle_favorite(contacts, contact_index)
